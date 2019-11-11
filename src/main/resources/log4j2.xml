@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+        <Async name="AsyncConsole">
+            <AppenderRef ref="Console"/>
+        </Async>
+        <File name="TraceFile" fileName="trace/${date:yyyyMMdd}T${date:HHmmss}.log" immediateFlush="false"
+              append="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+        <Async name="AsyncTraceFile">
+            <AppenderRef ref="TraceFile"/>
+        </Async>
+    </Appenders>
+    <Loggers>
+        <asyncRoot level="trace">
+            <AppenderRef ref="AsyncConsole" level="info"/>
+            <AppenderRef ref="AsyncTraceFile" level="trace"/>
+        </asyncRoot>
+    </Loggers>
+</Configuration>

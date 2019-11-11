@@ -87,9 +87,9 @@ INFO|Includes relevant events and states from the execution flow
 DEBUG|Includes relevant events and states for debugging purposes
 TRACE|Includes all the method invocations and execution stack
 
-Make sure to specify the properties
-``-DLog4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector`` and 
-``-Dorg.apache.logging.log4j.level=DEBUG`` (or other level) to properly set the logging configurations. 
+Check the ``log4j2.xml`` files for the log configuration (under ``main`` or 
+``test``).  Currently, we lazily log ``TRACE`` into a session file 
+(``./trace/${yyyyMMdd}T${HHmmss}.log``) and ``INFO`` into the console. 
 
 You can run
 ``mvn test``
